@@ -1,11 +1,21 @@
+import { useState } from 'react';
 import './App.css';
+import { Display } from './Display';
+import { Form } from './Form';
 
-function App() {
+
+
+const App = () => {
+  const [string, updatedString] = useState([]);
+
+  const handleOnSubmit = (newData) => {
+    updatedString([...string, newData])
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        Hello World
-      </header>
+      <Form handleOnSubmit={handleOnSubmit} />
+      <Display string={string} />
     </div>
   );
 }
